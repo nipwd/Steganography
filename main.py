@@ -63,27 +63,27 @@ def main():
     choice = input("Desea ocultar un mensaje en una imagen (1) o leer un mensaje oculto en una imagen (2)? ")
     if choice == '1':
         try:
-    		# Selecciona la imagen y el mensaje a ocultar
-        	image_file = input("Introduce el nombre de la imagen: ")
-        	image = Image.open(image_file)
-        	message = input("Introduce el mensaje que deseas ocultar: ")
-        	# Oculta el mensaje en la imagen
-        	steg = LSBSteg(image)
-        	steg.hide(message)
-        	# Guarda la imagen con el mensaje oculto
-        	output_file = input("Introduce el nombre del archivo de salida: ")
-        	steg.save(output_file)
-        	print("Se ha guardado la imagen con el mensaje oculto.")
+            # Selecciona la imagen y el mensaje a ocultar
+            image_file = input("Introduce el nombre de la imagen: ")
+            image = Image.open(image_file)
+            message = input("Introduce el mensaje que deseas ocultar: ")
+            # Oculta el mensaje en la imagen
+            steg = LSBSteg(image)
+            steg.hide(message)
+            # Guarda la imagen con el mensaje oculto
+            output_file = input("Introduce el nombre del archivo de salida: ")
+            steg.save(output_file)
+            print("Se ha guardado la imagen con el mensaje oculto.")
         except FileNotFoundError:
             print("{-} ERROR: Seleccionar archivo correcto")
             main()
     elif choice == '2':
         try:
-        	# Selecciona la imagen y lee el mensaje oculto
-        	image_file = input("Introduce el nombre de la imagen: ")
-        	image = Image.open(image_file)
-        	steg = LSBSteg(image)
-        	steg.show()
+            # Selecciona la imagen y lee el mensaje oculto
+            image_file = input("Introduce el nombre de la imagen: ")
+            image = Image.open(image_file)
+            steg = LSBSteg(image)
+            steg.show()
         except FileNotFoundError:
             print("{-} ERROR: Seleccionar archivo correcto")
             main()
