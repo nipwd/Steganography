@@ -28,6 +28,7 @@ class LSBSteg:
             print("El mensaje oculto es:", message)
         else:
             print("No se encontró ningún mensaje oculto en la imagen")
+            main()
 
     def save(self, file_path):
         self.image.save(file_path)
@@ -60,7 +61,7 @@ class LSBSteg:
 
 def main():
     # Opcion para guardar mensaje en imagen
-    choice = input("Desea ocultar un mensaje en una imagen (1) o leer un mensaje oculto en una imagen (2)? ")
+    choice = input("---Desea ocultar un mensaje en una imagen (1) ---leer un mensaje oculto en una imagen (2)? ---Salir (3)")
     if choice == '1':
         try:
             # Selecciona la imagen y el mensaje a ocultar
@@ -74,10 +75,11 @@ def main():
             output_file = input("Introduce el nombre del archivo de salida: ")
             steg.save(output_file)
             print("Se ha guardado la imagen con el mensaje oculto.")
+            main()
         except FileNotFoundError:
             print("{-} ERROR: Seleccionar archivo correcto")
             main()
-    elif choice == '2':
+    if choice == '2':
         try:
             # Selecciona la imagen y lee el mensaje oculto
             image_file = input("Introduce el nombre de la imagen: ")
@@ -87,9 +89,12 @@ def main():
         except FileNotFoundError:
             print("{-} ERROR: Seleccionar archivo correcto")
             main()
+    if choice == '3':
+        print("exit")
+        quit()
     else:
         print("Opción no válida")
-
+        main()
 if __name__ == 'main':
 	main()
 main()
